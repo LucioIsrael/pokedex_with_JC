@@ -1,0 +1,15 @@
+package br.com.project.pokedex_with_jc.pokedex.data.remote.dto
+
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Stat(
+    @SerialName("base_stat")
+    val baseStat: Int,
+    @SerialName("effort")
+    val effort: Int,
+    @SerialName("stat")
+    val stat: StatX
+)
