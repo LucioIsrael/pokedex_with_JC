@@ -16,10 +16,10 @@ import javax.inject.Inject
 class GetPokemonListUseCaseImpl @Inject constructor(
     private val pokemonRepository: PokemonRepository
 ): GetPokemonListUseCase {
-    override suspend fun invoke(limit: String, offset: Int): Flow<Resource<PokemonList>> = flow {
+    override fun invoke(): Flow<Resource<PokemonList>> = flow {
         try {
             emit(Resource.Loading<PokemonList>())
-            val pokemonListDto: PokemonListDto = pokemonRepository.getPokemonList(limit, offset)
+            val pokemonListDto: PokemonListDto = pokemonRepository.getPokemonList()
             val pokemonList = pokemonListDto.mapToPokemon()
             emit(Resource.Sucess<PokemonList>(pokemonList))
         } catch (e: HttpException) {
